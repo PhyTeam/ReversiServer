@@ -1,0 +1,2 @@
+# ReversiServer
+Reversi champion server
