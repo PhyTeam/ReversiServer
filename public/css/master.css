@@ -1,0 +1,530 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+a:active, a:hover {
+  outline: 0;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	height: 100%;
+	width: 100%;
+}
+
+::selection {
+	color: #04cb09;
+	background: transparent;
+}
+::-moz-selection {
+	color: #04cb09;
+	background: transparent;
+}
+
+body {
+	background: url('../images/bg-game-1x.png') black center center no-repeat;
+	color: #ccc;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1rem;
+	line-height: 1.6rem;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-tap-highlight-color: transparent;
+}
+
+h1, h2 {
+	color: #04cb09;
+	font-family: 'Days One', sans-serif;
+	padding-bottom: 0.5rem;
+}
+
+h2 {
+	margin-top: 1.5rem;
+}
+
+.nav-collapse a {
+	font-size: 16px;
+	text-align: center;
+	text-shadow: 0px 0px 5px rgba(4,203,9,0.5), 0px 0px 1px rgba(4,203,9,0.3), 0px 0px 3px rgba(4,203,9,0.3);
+}
+
+.nav-collapse a:hover {
+	text-shadow: 0px 0px 5px rgba(104,250,108,0.5), 0px 0px 1px rgba(104,250,108,0.5), 0px 0px 3px rgba(104,250,108,0.5);
+}
+
+#player-white,
+#player-black,
+#start {
+	display: none;
+}
+
+#gameboard {
+	width: 480px;
+	height: 480px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -240px 0 0 -240px;
+}
+
+#gameboard .row {
+	height: 60px;
+}
+
+#start-holder {
+	display: table;
+	margin: 20px auto 20px auto;
+}
+
+.cell {
+	width: 60px;
+	height: 60px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.piece {
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+.white .piece {
+	background: url('../images/chip-white-1x.png') no-repeat;
+	display: block;
+}
+
+.black .piece {
+	background: url('../images/chip-black-1x.png') no-repeat;
+	display: block;
+}
+
+.last-move {
+	/*background: rgba(128,255,128,0.5);*/
+}
+
+.open-move-black {
+	background: url('../images/chip-mini-black-1x.png') no-repeat;
+}
+
+#levels {
+	position: absolute;
+	width: 300px;
+	left: 50%;
+	margin-left: -145px;
+	top: 50%;
+	margin-top: 260px;
+	padding-bottom: 40px;
+}
+
+#levels a {
+	background: url('../images/btn-level-2x.png') no-repeat;
+	color: #04cb09;
+	font-family: 'Days One', sans-serif;
+	font-size: 12px;
+	float: left;
+	margin: 0 5px;
+	text-decoration: none;
+	text-align: center;
+	padding-top: 3px;
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+}
+
+#logo {
+	background: url('../images/logo.png');
+	width: 180px;
+	height: 40px;
+}
+
+
+/* ------------------------------------------
+  Retina Display
+--------------------------------------------- */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+
+	body {
+		background: url('../images/bg-game-2x.png') #000 center center no-repeat;
+		-webkit-background-size: 320px 480px;
+	}
+
+	#levels a {
+		background: url('../images/btn-level-1x.png') no-repeat;
+		-webkit-background-size: 32px 32px;
+	}
+
+	#gameboard {
+		width: 320px;
+		height: 320px;
+		margin: -160px 0 0 -160px;
+	}
+
+	#gameboard .row {
+		height: 40px;
+	}
+
+	.cell {
+		width: 40px;
+		height: 40px;
+	}
+
+	.white .piece {
+		background: url('../images/chip-white-2x.png') no-repeat;
+		-webkit-background-size: 40px 40px;
+	}
+
+	.black .piece {
+		background: url('../images/chip-black-2x.png') no-repeat;
+		-webkit-background-size: 40px 40px;
+		display: block;
+	}
+
+	.open-move-black {
+		background: url('../images/chip-mini-black-2x.png') no-repeat;
+		-webkit-background-size: 40px 40px;
+	}
+}
+
+
+/* ------------------------------------------
+  About
+--------------------------------------------- */
+
+#about {
+	position: absolute;
+	padding: 2rem;
+}
+
+#about li {
+	list-style-type: square;
+	margin-left: 1rem;
+	color: #04cb09;
+}
+
+#about span {
+	color: #ccc;
+}
+
+
+/* ------------------------------------------
+  Support Form
+--------------------------------------------- */
+
+.nav-collapse a {
+	font-size: 16px;
+}
+
+#support {
+	padding: 8rem 2rem;
+	position: absolute;
+}
+
+.btn-primary {
+	color: #04cb09 !important;
+	background-color: #333 !important;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #383838), color-stop(100%, #181818));
+	background-image: -webkit-linear-gradient(top, #383838, #181818);
+	background-image: -moz-linear-gradient(top, #383838, #181818);
+	background-image: -ms-linear-gradient(top, #383838, #181818);
+	background-image: -o-linear-gradient(top, #383838, #181818);
+	background-image: linear-gradient(top, #383838, #181818);
+	border: none !important;
+	font-family: 'Days One', sans-serif;
+}
+
+
+/* ------------------------------------------
+  Media Queries
+--------------------------------------------- */
+
+/* Desktop Retina */
+@media screen and (min-width: 1025px) and (-webkit-min-device-pixel-ratio: 2) {
+
+	body {
+		background: url('../images/bg-game-3x.png') #000 center center no-repeat;
+		-webkit-background-size: 576px 768px;
+	}
+
+	#gameboard {
+		width: 480px;
+		height: 480px;
+		margin: -240px 0 0 -240px;
+	}
+
+	#gameboard .row {
+		height: 60px;
+	}
+
+	.cell {
+		width: 60px;
+		height: 60px;
+	}
+
+	.white .piece {
+		background: url('../images/chip-white-3x.png') no-repeat;
+		-webkit-background-size: 60px 60px;
+	}
+
+	.black .piece {
+		background: url('../images/chip-black-3x.png') no-repeat;
+		-webkit-background-size: 60px 60px;
+		display: block;
+	}
+
+	.open-move-black {
+		background: url('../images/chip-mini-black-3x.png') no-repeat;
+		-webkit-background-size: 60px 60px;
+	}
+
+}
+
+/* Desktop Browser */
+@media screen and (min-width: 1025px) {
+
+	#about,
+	#support {
+		left: 50%;
+		width: 400px;
+		margin-left: -215px;
+		margin-top: 80px;
+	}
+
+	#support {
+		top: 20%;
+		margin-left: -200px;
+		margin-top: -120px;
+		width: 430px;
+		height: 360px;
+	}
+}
+
+/* iPad Retina horizontal */
+@media screen and (min-width: 568px) and (max-width: 1024px) and (min-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+
+	body {
+		background: url('../images/bg-game-3x.png') #000 center center no-repeat;
+		-webkit-background-size: 576px 768px;
+	}
+
+	#gameboard {
+		width: 480px;
+		height: 480px;
+		margin: -240px 0 0 -240px;
+	}
+
+	#gameboard .row {
+		height: 60px;
+	}
+
+	.cell {
+		width: 60px;
+		height: 60px;
+	}
+
+	.white .piece {
+		background: url('../images/chip-white-3x.png') no-repeat;
+		-webkit-background-size: 60px 60px;
+	}
+
+	.black .piece {
+		background: url('../images/chip-black-3x.png') no-repeat;
+		-webkit-background-size: 60px 60px;
+		display: block;
+	}
+
+	.open-move-black {
+		background: url('../images/chip-mini-black-3x.png') no-repeat;
+		-webkit-background-size: 60px 60px;
+	}
+
+}
+
+/* iPad Retina horizontal */
+@media screen and (min-width: 568px) and (max-width: 1024px) and (min-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+
+	body {
+		background: url('../images/bg-game-3x.png') #000 center center no-repeat;
+		-webkit-background-size: 576px 768px;
+	}
+
+	#gameboard {
+		width: 480px;
+		height: 480px;
+		margin: -240px 0 0 -240px;
+	}
+
+	#gameboard .row {
+		height: 60px;
+	}
+
+	.cell {
+		width: 60px;
+		height: 60px;
+	}
+
+	.white .piece {
+		background: url('../images/chip-white-3x.png') no-repeat;
+		-webkit-background-size: 60px 60px;
+	}
+
+	.black .piece {
+		background: url('../images/chip-black-3x.png') no-repeat;
+		-webkit-background-size: 60px 60px;
+		display: block;
+	}
+
+	.open-move-black {
+		background: url('../images/chip-mini-black-3x.png') no-repeat;
+		-webkit-background-size: 60px 60px;
+	}
+
+}
+
+
+/* iPad horizontal */
+@media screen and (min-width: 569px) and (max-width: 1024px) {
+
+	#about {
+		margin-top: 1rem;
+	}
+
+	#support {
+		left: 50%;
+		padding: 6rem 2rem;
+		margin-left: -384px;
+		width: 768px;
+	}
+}
+
+/* iPad vertical */
+@media screen and (min-width: 569px) and (max-width: 768px) {
+
+	#about {
+		margin-top: 1rem;
+	}
+
+	#support {
+		left: 50%;
+		padding: 1rem 2rem;
+		top: 40px;
+		margin-left: -250px;
+		width: 500px;
+	}
+}
+
+/* iPhone horizontal */
+@media screen and (min-width: 321px) and (max-width: 568px) {
+
+	#about {
+		margin-top: 1rem;
+	}
+
+	#support {
+		padding: 2rem;
+		top: 20px;
+		width: 100%;
+	}
+
+	#levels {
+		margin-top: 180px;
+	}
+}
+
+/* iPhone vertical */
+@media screen and (max-width: 320px) {
+
+	#about {
+		margin-top: 1rem;
+	}
+
+	#support {
+		left: 50%;
+		padding: 2rem;
+		top: 40px;
+		margin-left: -160px;
+		width: 320px;
+	}
+
+	#levels {
+		margin-top: 180px;
+	}
+}
+
+
+/* ------------------------------------------
+  Bootstrap Overwrites
+--------------------------------------------- */
+
+a {
+	color: #04cb09 !important;
+}
+
+a:active, a:hover {
+ 	color: #68fa6c !important;
+}
+
+.nav-collapse a {
+ 	line-height: 1 !important;
+	text-align: center;
+}
+
+.form-group {
+	margin-bottom: 25px !important;
+}
+
+label {
+	color: #ccc !important;
+	font-family: 'Days One', sans-serif;
+	font-weight: normal !important;
+}
+
+.form-control {
+	background-color: #333 !important;
+	border: none !important;
+	color: #ccc !important;
+}
+
+.form-control:focus {
+	border: 1px solid #ccc !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+}
